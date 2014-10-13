@@ -1,4 +1,6 @@
-/*  
+"use strict";
+
+/*
 	1. Addition 
 	There are two different fields: #additionInput1 and #additionInput2. 
 	We've already written the functionality for handling when the user 
@@ -6,9 +8,11 @@
 	Your job is to write code that takes the two fields, 
 	and alerts the user what the sum is.
 */ 
-
+var num;
 function addition() {
-	// your code goes here!
+	var num1 = document.getElementById('additionInput1').value;
+    var num2 = document.getElementById('additionInput2').value;
+    alert(parseFloat(num1) + parseFloat(num2));
 }
 
 /* --------------------------------------------------------- */
@@ -28,7 +32,20 @@ function addition() {
 */ 
 
 function vowelCounter() {
-	// your code goes here!
+	var sentence = document.getElementById('vowelInput').value;
+    var count = 0;
+    sentence = sentence.toLocaleLowerCase()
+    for (var i = 0; i < sentence.length; ++i) {
+        var letter = sentence.charAt(i);
+        if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') {
+            count++;
+        }
+    }
+    if (count == 1) {
+        document.getElementById('vowelInput').value = "That sentence has 1 vowel in it.";
+    } else {
+        document.getElementById('vowelInput').value = "That sentence has " + count + " vowels in it.";
+    }
 }
 
 /* --------------------------------------------------------- */
@@ -59,11 +76,19 @@ function vowelCounter() {
 */ 
 
 function submit() {
-	
+    var guess = document.getElementById('numberGuess').value;
+    if(guess < num) {
+        document.getElementById('numberResult').innerHTML = "Higher";
+    } if(guess > num) {
+        document.getElementById('numberResult').innerHTML = "Lower";
+    } else {
+        document.getElementById('numberResult').innerHTML = "You have won!";
+    }
+
 }
 
 function reset() {
-
+num = Math.floor((Math.random() * 100) + 1);
 }
 
 
